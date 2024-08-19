@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/CSS/colors.css" />
+    <link rel="stylesheet" href="/CSS/fonts.css" />
+    <link rel="stylesheet" href="/CSS/global_style.css" />
+    <link rel="stylesheet" href="/CSS/contacts-style.css" />
+    <link rel="stylesheet" href="/CSS/style.css" />
+    <link rel="stylesheet" href="/CSS/contacts-media.css" />
+    <link rel="stylesheet" href="/CSS/media.css" />
+    <link rel="icon" href="/assets/img/join_favicon.svg" />
+
+    <title>Join</title>
+  </head>
+  <body onload="includeHTML();initContact()">
+    <div w3-include-html="/assets/templates/sidebar_menu.html"></div>
+    <div
+      id="contact-initial-container"
+      class="initial-container"
+      onclick="toggleShowLogout()"
+    >
+      <div id="sub-contact-initial-container" class="sub-initial-container">
+        G
+      </div>
+    </div>
+    <section class="main-container-contacts">
+      <div class="contacts-list-container">
+        <div
+          id="contacts-container-responsive"
+          class="contacts-container-responsive"
+        >
+          <div class="flex-align-center headline-div-contacts-mobil">
+            <div class="h1-and-backimg-container">
+              <h1 class="h1-mobil">Contacts</h1>
+              <img
+                onclick="closeContact()"
+                class="back_icon"
+                src="./assets/img/back_icon.svg"
+                alt=""
+              />
+            </div>
+            <div class="light-blue parting-line-h1"></div>
+            <span class="head-description">Better with a team</span>
+            <div class="parting-line-h1-horizontal"></div>
+          </div>
+          <div id="contact-responsive" class="contact-responsive">
+            <!-- render -->
+          </div>
+        </div>
+        <div id="contacts-list" class="contacts-list flex-col-align-center">
+          <button
+            onclick="addNewContactPopUp()"
+            class="dark-grey flex-just-align-center"
+            id="add-new-contact-btn"
+          >
+            <span>Add new contact</span>
+            <img src="./assets/img/add_contact_icon.svg" alt="" />
+          </button>
+          <div id="contacts-list-content"></div>
+          <img
+            onclick="addNewContactPopUp()"
+            class="button_add_contact_dark_blue"
+            src="./assets/img/button_add_contact_dark_blue.svg"
+            alt=""
+          />
+        </div>
+      </div>
+
+      <div class="contacts-container">
+        <div class="contacts-container-backimage">
+          <div class="flex-align-center headline-div-contacts">
+            <h1>Contacts</h1>
+            <div class="light-blue parting-line-h1"></div>
+            <span class="head-description">Better with a team</span>
+            <div class="parting-line-h1-horizontal"></div>
+          </div>
+          <div>
+            <img
+              onclick="closeContact()"
+              class="back_icon"
+              id="back-icon"
+              src="./assets/img/back_icon.svg"
+              alt=""
+            />
+          </div>
+        </div>
+        <div class="contact" id="contact">
+          <!-- render -->
+        </div>
+      </div>
+
+      <div class="d-none" id="add-new-contact-popUp-bg">
+        <div class="add-new-or-edit-contact-popUp">
+          <div class="popUp-edit-add-leftside">
+            <div class="container-close-icon-responsive">
+              <img
+                onclick="closePupUpaddNewOrEdditContact()"
+                class="close-icon-responsive"
+                src="./assets/img/close_icon_white.svg"
+                alt=""
+              />
+            </div>
+            <div
+              id="popUp-edit-leftside-content"
+              class="popUp-edit-add-leftside-content"
+            >
+              <img src="./assets/img/join_logo_WHT.svg" alt="" />
+              <span class="span-Contact">Add contact</span>
+              <span class="span-tasks-are-better"
+                >Tasks are better with a team!</span
+              >
+              <div class="line-under-add-or-edit-contact-popup"></div>
+            </div>
+          </div>
+          <div class="popUp-edit-add-middle">
+            <div class="bg-contact_icon">
+              <svg
+                id="Ebene_1"
+                data-name="Ebene 1"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 108 108"
+              >
+                <defs>
+                  <style>
+                    .cls-1 {
+                      fill: #ffff;
+                      stroke-width: 0px;
+                    }
+                  </style>
+                </defs>
+                <path
+                  class="cls-1"
+                  d="M54,54c-7.42,0-13.78-2.64-19.07-7.93-5.29-5.29-7.93-11.64-7.93-19.07s2.64-13.78,7.93-19.07C40.22,2.64,46.58,0,54,0s13.78,2.64,19.07,7.93c5.29,5.29,7.93,11.64,7.93,19.07s-2.64,13.78-7.93,19.07c-5.29,5.29-11.64,7.93-19.07,7.93ZM94.5,108H13.5c-3.71,0-6.89-1.32-9.53-3.97-2.64-2.64-3.97-5.82-3.97-9.53v-5.4c0-3.83.98-7.34,2.95-10.55,1.97-3.21,4.58-5.65,7.85-7.34,6.97-3.49,14.06-6.1,21.26-7.85,7.2-1.74,14.51-2.62,21.94-2.62s14.74.87,21.94,2.62c7.2,1.74,14.29,4.36,21.26,7.85,3.26,1.69,5.88,4.13,7.85,7.34,1.97,3.21,2.95,6.72,2.95,10.55v5.4c0,3.71-1.32,6.89-3.97,9.53-2.64,2.64-5.82,3.97-9.53,3.97ZM13.5,94.5h81v-5.4c0-1.24-.31-2.36-.93-3.38-.62-1.01-1.43-1.8-2.45-2.36-6.07-3.04-12.21-5.32-18.39-6.83-6.19-1.52-12.43-2.28-18.73-2.28s-12.54.76-18.73,2.28c-6.19,1.52-12.32,3.8-18.39,6.83-1.01.56-1.83,1.35-2.45,2.36-.62,1.01-.93,2.14-.93,3.38v5.4ZM54,40.5c3.71,0,6.89-1.32,9.53-3.97,2.64-2.64,3.97-5.82,3.97-9.53s-1.32-6.89-3.97-9.53c-2.64-2.64-5.82-3.97-9.53-3.97s-6.89,1.32-9.53,3.97c-2.64,2.64-3.97,5.82-3.97,9.53s1.32,6.89,3.97,9.53c2.64,2.64,5.82,3.97,9.53,3.97Z"
+                />
+              </svg>
+            </div>
+          </div>
+          <div class="popUp-edit-add-rightside">
+            <div class="container-close-icon">
+              <img
+                onclick="closePupUpaddNewOrEdditContact()"
+                class="close-icon"
+                src="./assets/img/close_icon.svg"
+                alt=""
+              />
+            </div>
+            <form
+              onsubmit="validateAndSubmit(event)"
+              class="form-add-new-contact"
+              action=""
+            >
+              <input
+                placeholder="Name"
+                id="contact-trial-name"
+                class="input-text-email-number-contact input-text-contact"
+                type="text"
+                required
+              />
+              <input
+                placeholder="E-Mail"
+                id="contact-trial-email"
+                class="input-text-email-number-contact input-email-contact"
+                type="email"
+                required
+              />
+              <input
+                placeholder="Telefon"
+                id="contact-trial-phone"
+                class="input-text-email-number-contact input-number-contact"
+                type="tel"
+                pattern="[+0-9\s]+"
+                required
+              />
+
+              <div class="button-container-add">
+                <img
+                  onclick="closePupUpaddNewOrEdditContact()"
+                  class="button_cancel"
+                  src="./assets/img/button_cancel.svg"
+                  alt="Abbrechen"
+                />
+                <button
+                  type="submit"
+                  style="background: transparent; border: none"
+                >
+                  <img
+                    class="button_create_contact"
+                    src="./assets/img/button_create_contact.svg"
+                    alt="Erstellen"
+                  />
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="d-none" id="edit-contact-popUp-bg">
+        <div class="add-new-or-edit-contact-popUp">
+          <div class="popUp-edit-add-leftside">
+            <div class="container-close-icon-responsive">
+              <img
+                id="close-icon-edit"
+                onclick="closePupUpaddNewOrEdditContact()"
+                class="close-icon-responsive"
+                src="./assets/img/close_icon_white.svg"
+                alt=""
+              />
+            </div>
+            <div class="popUp-edit-add-leftside-content">
+              <img src="./assets/img/join_logo_WHT.svg" alt="" />
+              <span class="span-Contact">Edit contact</span>
+              <div class="line-under-add-or-edit-contact-popup"></div>
+            </div>
+          </div>
+          <div id="popUp-edit-add-middle" class="popUp-edit-add-middle">
+            <!-- render -->
+          </div>
+          <div class="popUp-edit-add-rightside">
+            <div class="container-close-icon">
+              <img
+                onclick="closePupUpaddNewOrEdditContact()"
+                class="close-icon"
+                src="./assets/img/close_icon.svg"
+                alt=""
+              />
+            </div>
+            <div id="form-container">
+              <!-- render -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="/js/firebase.js"></script>
+    <script src="/js/script.js"></script>
+    <script src="/js/contacts.js"></script>
+    <script src="/js/renderHTML.js"></script>
+  </body>
+</html>

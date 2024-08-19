@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/CSS/colors.css">
+    <link rel="stylesheet" href="/CSS/fonts.css">
+    <link rel="stylesheet" href="/CSS/global_style.css">
+    <link rel="stylesheet" href="/CSS/style.css">
+    <link rel="stylesheet" href="/CSS/index-style.css">
+    <link rel="stylesheet" href="/CSS/index-media.css">
+    <link rel="stylesheet" href="/CSS/media.css">
+    <link rel="icon" href="/assets/img/join_favicon.svg">
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <title>Join</title>
+</head>
+
+<body onload="initIndex()">
+    <section id="login-site" class="login-site w-100">
+        <div id="signUp-Container" class="signUp-container">
+            <span>Not a Join user?</span>
+            <button onclick="goToSignupSite()">Sign up</button>
+        </div>
+        <div id="logo-container" class="logo-container">
+            <img id="logo" src="./assets/img/join_logo_DARK.svg">
+        </div>
+        <div id="login-container" class="login-container">
+            <form onsubmit="login(event); return false;" id="loginForm">
+                <div class="h1-container">
+                    <h1>Log in</h1>
+                    <div class="line"></div>
+                </div>
+                <div class="inputs-container flex-col-just-center">
+                    <input id="email" type="email" required placeholder="Email" class="input1">
+                    <div id="wrong-email" class="wrong-password-container d-none">you are not registered, please sign up!</div>
+                    <input onclick="togglePasswordVisibility('password')" id="password" type="password" required placeholder="Password" class="input2">
+                    <div oninput="checkPasswordLogin()" id="wrong-password-login" class="wrong-password-container d-none">Wrong password Ups! Try again.</div>
+                    <div class="checkbox">
+                        <input type="checkbox" id="rememberMe">
+                        <span>Remember me</span>
+                    </div>
+                </div>
+                <div class="login-buttons-container">
+                    <button type="submit" class="login-button">Login</button>
+                    <button onclick="goToSummarySite()">Guest Log in</button>
+                </div>
+            </form>
+        </div>
+        <div id="signup-site-container" class="login-container" style="opacity: 0;"></div>
+        <div id="alertMessage" class="alert-message">
+            <div id="popup-message" class="popup-message">You Signed Up successfully!</div>
+        </div>
+       
+        <div id="imprint-container" class="imprint-container">
+            <a onclick="goToPrivacyOrImprintOrHelp()" id="privacy" href="#">Privacy Policy</a>
+            <a onclick="goToPrivacyOrImprintOrHelp()" id="imprint" href="#">Legal notice</a>
+        </div>
+    </section>
+
+    <div id="msgBox"></div>
+
+
+    <script src="/js/firebase.js"></script>
+    <script src="/js/script.js"></script>
+    <script src="/js/index.js"></script>
+    <script src="/js/renderHTML.js"></script>
+    
+    
+</body>
+
+</html>
